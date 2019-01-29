@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ordent\\RamenRest\\": "src/",
+            "Ordent\\RamenFile\\": "src/",
             "Orchestra\\Testbench\\" : "vendor/orchestra/testbench-core/src/",
             "Intervention\\Image\\" : "vendor/intervention/image/src/"
         }
