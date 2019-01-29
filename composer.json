@@ -1,17 +1,23 @@
 {
-    "name": "ordent/ramenrest",
+    "name": "ordent/ramenfile",
     "type": "library",
     "authors": [
         {
             "name": "Dimas Satrio",
             "email": "dimassrio@gmail.com"
+        },
+        {
+            "name": "Rachmat Priambudi",
+            "email": "r.priambudi3@gmail.com"
         }
     ],
     "require": {
         "league/fractal": "^0.16.0",
         "orchestra/testbench": "^3.6",
         "intervention/image": "^2.4",
-        "superbalist/laravel-google-cloud-storage": "^2.0"
+        "superbalist/laravel-google-cloud-storage": "^2.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "ordent/ramenrest": "^1.1"
     },
     "autoload": {
         "psr-4": {

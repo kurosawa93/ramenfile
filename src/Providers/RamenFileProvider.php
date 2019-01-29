@@ -1,10 +1,10 @@
 <?php
 
-namespace Ordent\RamenRest\Providers;
+namespace Ordent\RamenFile\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class RamenRestProvider extends ServiceProvider
+class RamenFileProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -15,20 +15,6 @@ class RamenRestProvider extends ServiceProvider
     {
         // adding default routes
         $this->loadRoutesFrom(__DIR__.'/../Routes/routes.php');
-        // override response factory with package response class
-        $responseFactory = $this->app[\Ordent\RamenRest\Response\RestResponse::class];
-        foreach (get_class_methods($responseFactory) as $method){
-            \Response::macro($method, [$responseFactory, $method]);
-        }
-        // override handler for resolving exception
-        \App::bind(
-            \Illuminate\Contracts\Debug\ExceptionHandler::class,
-            \Ordent\RamenRest\Exception\Handler::class
-        );
-        // publish config files
-        $this->publishes([
-            __DIR__.'/../config/ramen.php' => config_path('ramen.php')
-        ]);
         // adding migration for file model type
         $this->loadMigrationsFrom(__DIR__.'/../Migrations');
         
@@ -41,8 +27,9 @@ class RamenRestProvider extends ServiceProvider
      */
     public function register()
     {
+        // register ramen rest
+        $this->app->register(Ordent\RamenRest\Providers\RamenRestProvider::class);
         // merge config for default package config and setting up disks type filesystem
-        $this->mergeConfigFrom(__DIR__.'/../config/ramen.php', 'ramen');
         $this->mergeConfigFrom(__DIR__.'/../config/filesystems-disks.php', 'filesystems.disks');
         // adding support to stores files in google cloud storage
         $this->app->register(\Superbalist\LaravelGoogleCloudStorage\GoogleCloudStorageServiceProvider::class);
@@ -50,11 +37,7 @@ class RamenRestProvider extends ServiceProvider
         $this->app->register(\Intervention\Image\ImageServiceProvider::class);
         // adding support for files processor
         $this->app->singleton('FileProcessor', function($app){
-            return new \Ordent\RamenRest\Processor\FileProcessor;
-        });
-        // adding support for rest manager
-        $this->app->singleton('RestManager', function($app){
-            return new \League\Fractal\Manager;
+            return new \Ordent\RamenFile\Processor\FileProcessor;
         });
     }
 }
