@@ -1,5 +1,5 @@
 <?php
-namespace Ordent\RamenRest\Processor;
+namespace Ordent\RamenFile\Processor;
 
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Facades\Image;

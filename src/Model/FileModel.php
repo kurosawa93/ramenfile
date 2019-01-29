@@ -1,9 +1,9 @@
 <?php 
-namespace Ordent\RamenRest\Model;
+namespace Ordent\RamenFile\Model;
 use Illuminate\Database\Eloquent\Model;
 
 class FileModel extends Model{
-    use RestModelTrait;
+    use FileModelTrait;
     protected $table = 'files';
     protected $fillable = [
         'files',

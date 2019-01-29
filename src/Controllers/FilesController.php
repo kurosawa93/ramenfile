@@ -1,6 +1,8 @@
 <?php
-namespace Ordent\RamenRest\Controllers;
+namespace Ordent\RamenFile\Controllers;
+
 use Illuminate\Http\Request;
+use Ordent\RamenRest\Controllers\RestController;
 
 class FilesController extends RestController
 {

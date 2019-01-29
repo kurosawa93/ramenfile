@@ -1,9 +1,10 @@
 <?php
-namespace Ordent\RamenRest\Model;
+namespace Ordent\RamenFile\Model;
+
 use Illuminate\Http\UploadedFile;
 use Ordent\RamenRest\Transformer\RestTransformer;
 
-trait RestModelTrait{
+trait FileModelTrait{
     
     public function getTransformer(){
         if($this->transformer){
