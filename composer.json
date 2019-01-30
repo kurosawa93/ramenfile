@@ -26,5 +26,5 @@
             "Intervention\\Image\\" : "vendor/intervention/image/src/"
         }
     },
-    "description": "RamenRest is another Rest Library for Laravel, it focused on exposing of each component separately and use it on controller. Rather than just having AIO process."
+    "description": "RamenFile is part of Ramen package suite that specifically handle file-related operations, and supporting multiple cloud server."
 }
